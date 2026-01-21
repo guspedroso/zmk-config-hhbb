@@ -14,59 +14,20 @@
 #define LOWER    2
 #define BOTH     3
 
-// -----------------------------------
-// | TAB:TAB |    |    |    |    |   -:-  =:=  <:<   |   (< = bksp)
-// | ESC:ESC |    |    |    |    |    |   #:#   |
-// |    |    |    |    |    |    |    |    |
-//           |    |    |         |    |    |
-
-/ {
-    combos {
-        compatible = "zmk,combos";
-
-        combo_tab {
-            timeout-ms = <50>;
-            key-positions = <0 1>;
-            bindings = <&kp TAB>;
-        };
-
-        combo_esc {
-            timeout-ms = <50>;
-            key-positions = <10 11>;
-            bindings = <&kp ESC>;
-        };
-
-        combo_dash {
-            timeout-ms = <50>;
-            key-positions = <6 7>;
-            bindings = <&kp MINUS>;
-        };
-
-        combo_eq {
-            timeout-ms = <50>;
-            key-positions = <7 8>;
-            bindings = <&kp EQUAL>;
-        };
-
-        combo_bksp {
-            timeout-ms = <50>;
-            key-positions = <8 9>;
-            bindings = <&kp BSPC>;
-        };
-
-        combo_hash {
-            timeout-ms = <50>;
-            key-positions = <17 18>;
-            bindings = <&kp NON_US_HASH>;
-        };
-
-    };
-};
-
 / {
     keymap {
         compatible = "zmk,keymap";
 
+        // Default layer
+        // |-----------------------------------------------------------|
+        // |  Q  |  W  |  E  |  R  |  T  |  Y  |  U  |  I  |  O  |  P  |
+        // |-----------------------------------------------------------|
+        // |  A  |  S  |  D  |  F  |  G  |  H  |  J  |  K  |     L     |
+        // |-----------------------------------------------------------|
+        // |  Z     |  X  |  C  |  V  |  B  |  N  |  M  |  .  |   TRNS |
+        // |-----------------------------------------------------------|
+        //        | LSFT | LWR |   SPC   |  RSE  | ENT | TRNS |
+        //        |-------------------------------------------|
         default_layer {
             bindings = <
     &kp Q      &kp W       &kp E      &kp R           &kp T      &kp Y     &kp U   &kp I     &kp O     &kp P
@@ -76,6 +37,16 @@
             >;
         };
 
+        // Raise layer
+        // |--------------------------------------------------------------------|
+        // | TAB | TRNS | TRNS | TRNS | TRNS | TRNS | TRNS | TRNS | TRNS | BSPC |
+        // |--------------------------------------------------------------------|
+        // | ESC | TRNS | TRNS |  F5  | TRNS | TRNS | F12 | TRNS |     ;        |
+        // |--------------------------------------------------------------------|
+        // |  TRNS  | TRNS | TRNS | PGUP | PGDN | TRNS | TRNS |  /  |   TRNS    |
+        // |--------------------------------------------------------------------|
+        //          | LCTL | BOTH |  HOME  | BOTH | TRNS | TRNS |
+        //          |-------------------------------------------|
         raise_layer {
             bindings = <
     &kp TAB    &trans    &trans     &trans     &trans     &trans  &trans    &trans    &trans    &kp BSPC
@@ -85,6 +56,16 @@
             >;
         };
 
+        // Lower layer
+        // |-----------------------------------------------------------------|
+        // |  1  |  2  |  3  |  4  |  5   |  6   |  7   |  8   |  9   |   0  |
+        // |-----------------------------------------------------------------|
+        // | CAPS | TRNS | TRNS | TRNS | TRNS | LEFT | DOWN |  UP  |   RGHT  |
+        // |-----------------------------------------------------------------|
+        // |  NUBS  | TRNS | TRNS | PGUP | PGDN | TRNS | TRNS | COMM |  TRNS |
+        // |-----------------------------------------------------------------|
+        //          | LGUI | BOTH |   END   | BOTH | TRNS | TRNS |
+        //          |--------------------------------------------|
         lower_layer {
             bindings = <
     &kp N1          &kp N2    &kp N3   &kp N4     &kp N5     &kp N6    &kp N7    &kp N8    &kp N9    &kp N0
@@ -94,6 +75,16 @@
             >;
         };
 
+        // Both layer
+        // |-----------------------------------------------------------------|
+        // | BCLR | BT0 | BT1 | BT2 | TRNS | TRNS | TRNS | TRNS | TRNS | DEL |
+        // |-----------------------------------------------------------------|
+        // | TRNS | TRNS | TRNS | TRNS | TRNS | TRNS | TRNS | TRNS |     @   |
+        // |-----------------------------------------------------------------|
+        // |  TRNS  | TRNS | TRNS | TRNS | TRNS | TRNS | TRNS | TRNS |  TRNS |
+        // |-----------------------------------------------------------------|
+        //           | OUSB | TRNS |  OTOG  | TRNS | OBLE | TRNS |
+        //           |-------------------------------------------|
         both_layer {
             bindings = <
     &bt BT_CLR   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &trans  &trans  &trans  &trans &trans &kp DEL
